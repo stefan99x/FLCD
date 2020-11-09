@@ -1,5 +1,4 @@
-from Scanner import Scanner
-from SymbolTable import *
+from Lab03.Scanner import Scanner
 
 if __name__ == "__main__":
     # symbolTable = SymbolTable()

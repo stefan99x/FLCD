@@ -1,4 +1,4 @@
-from BinarySearchTree import BinarySearchTree
+from Lab03.BinarySearchTree import BinarySearchTree
 
 
 class SymbolTable:

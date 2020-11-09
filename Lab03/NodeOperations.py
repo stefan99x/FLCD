@@ -1,4 +1,4 @@
-import Node
+from Lab03 import Node
 
 
 class NodeOperations:

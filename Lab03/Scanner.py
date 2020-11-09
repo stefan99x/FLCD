@@ -1,6 +1,6 @@
-from Token import *
-from SymbolTable import SymbolTable
-from PIF import PIF
+from Lab03.Token import *
+from Lab03.SymbolTable import SymbolTable
+from Lab03.PIF import PIF
 import re
 
 

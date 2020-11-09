@@ -1,5 +1,5 @@
-from Node import Node
-from NodeOperations import NodeOperations
+from Lab03.Node import Node
+from Lab03.NodeOperations import NodeOperations
 
 
 class BinarySearchTree:
