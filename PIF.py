@@ -10,3 +10,7 @@ class PIF:
         for element in self.pif:
             text += str(element[0]) + " -> " + str(element[1]) + "\n"
         return text
+
+    def printToFile(self):
+        with open("pif.out", 'w') as file:
+            file.write(self.__str__())

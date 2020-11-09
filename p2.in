@@ -1,0 +1,15 @@
+noitcnunf
+} a = citeste;
+fi ) a > 1 (
+}
+rof ) tni i = 2; i <= a/2; i++(
+}
+fi ) a % i == 0 ( } nruter false; {
+{
+nruter true;
+{
+esle
+}
+nruter false;
+{
+{

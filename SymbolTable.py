@@ -10,3 +10,6 @@ class SymbolTable:
 
     def print(self):
         self.tree.printBinarySearchTree()
+
+    def printToFile(self):
+        self.tree.printToFile()

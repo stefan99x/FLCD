@@ -1,0 +1,14 @@
+noitcnunf
+} tni a[100] = [];
+n = citeste;
+rof ) tni i = 0; i<=n; i++(
+}
+a[i] = citeste;
+{
+tni sum = 0;
+rof ) tni i = 0; i<=n; i++(
+}
+sum = sum + a[i];
+{
+nruter sum;
+{

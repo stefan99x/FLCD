@@ -36,3 +36,15 @@ class NodeOperations:
             NodeOperations.inOrder(root.left)
             print("#" + root.identifier + "=>" + str(root.position))
             NodeOperations.inOrder(root.right)
+
+    @staticmethod
+    def inOrderSolution(root: Node, file):
+        if root:
+            NodeOperations.inOrderSolution(root.left, file)
+            file.write(root.identifier + "=>" + str(root.position) + '\n')
+            NodeOperations.inOrderSolution(root.right, file)
+
+    @staticmethod
+    def printToFile(root: Node):
+        with open("st.out", 'w') as file:
+            NodeOperations.inOrderSolution(root, file)

@@ -27,3 +27,6 @@ class BinarySearchTree:
         NodeOperations.insert(self.root, newNode)
         newNode.position = self.currentPosition
         self.currentPosition += 1
+
+    def printToFile(self):
+        NodeOperations.printToFile(self.root)

@@ -13,7 +13,11 @@ class Scanner:
 
     @staticmethod
     def isConstant(token):
-        return re.match('^[a-zA-Z_]([a-zA-Z0-9]){,255}$', token) is not None
+        isConstant = re.match("^0$|^(([+\\-])?[1-9][0-9]*)$", token)
+        isBool = token == "true" or token == "false"
+        isString = re.match("^\"([a-zA-Z0-9_.?,!; @/|(){}\[\]\+\-*%$])*\"$", token)
+
+        return isConstant or isBool or isString
 
     @staticmethod
     def isOperator(token):
@@ -24,7 +28,7 @@ class Scanner:
         return re.match('^[a-zA-Z_]([a-zA-Z0-9]){,255}$', token) is not None
 
     @staticmethod
-    def getString(line, index):
+    def getStringConstant(line, index):
         token = ''
         numberOfQuotes = 0
         while index < len(line) and numberOfQuotes < 2:
@@ -70,7 +74,7 @@ class Scanner:
             if line[index] == '"':
                 if token:
                     tokens.append(token)
-                token, index = Scanner.getString(line, index)
+                token, index = Scanner.getStringConstant(line, index)
                 tokens.append(token)
                 token = ""
 
@@ -83,7 +87,7 @@ class Scanner:
 
             elif Scanner.isContainedInOperator(line[index]):
                 operator, index = Scanner.getOperator(line, index)
-                if operator != None:
+                if operator is not None:
                     if token:
                         tokens.append(token)
                     tokens.append(operator)
@@ -104,12 +108,13 @@ class Scanner:
     def run(self):
         with open(self.filename, "r") as file:
             lineNumber = 1
+            isOk = True
             for line in file:
                 tokens = Scanner.getTokensFromLine(line)
                 print(tokens)
                 for token in tokens:
                     if token in separators or token in operators or token in reservedWords:
-                        self.PIF.add(self._tokens[token], 1)
+                        self.PIF.add(self._tokens[token], -1)
 
                     elif Scanner.isIdentifier(token):
                         id = self.SymbolTable.insert(token)
@@ -120,9 +125,21 @@ class Scanner:
                         self.PIF.add(self._tokens['constant'], id)
 
                     else:
-                        raise Exception("Invalid token " + token + " at the line" + str(lineNumber))
+                        # raise Exception("Invalid token " + token + " at the line" + str(lineNumber))
+                        print("Invalid Token: { " + token + " } at line: " + str(lineNumber) + "\n")
+                        isOk = False
 
                 lineNumber += 1
+
+            if isOk:
+                print("All good homie")
+                print(self.PIF)
+                self.PIF.printToFile()
+
+                self.SymbolTable.print()
+                self.SymbolTable.printToFile()
+            else:
+                print("Lexically incorrect. ")
 
             print(self.PIF)
             print(self.SymbolTable.print())

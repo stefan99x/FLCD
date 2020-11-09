@@ -15,5 +15,5 @@ if __name__ == "__main__":
     #
     # symbolTable.print()
 
-    scanner = Scanner("p1.in")
-    scanner.run();
+    scanner = Scanner("p1err.in")
+    scanner.run()
