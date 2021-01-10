@@ -1,0 +1,10 @@
+
+noitcnuf
+}
+daer(a);
+daer(b);
+daer(c);
+fi  a > b && a > c  } etirw(a); {;
+fi  b > a && b > c  } etirw(b); {;
+fi  c > a && c > b  } etirw(c); {;
+{
